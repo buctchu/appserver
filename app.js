@@ -8,6 +8,27 @@ const logger = require('koa-logger')
 const cors = require('koa2-cors');
 const index = require('./routes/index')
 const users = require('./routes/users')
+const mongoose = require('mongoose');
+const bluebird = require('bluebird');
+
+
+
+
+mongoose.Promise = bluebird;
+//连接数据库
+mongoose.connect('mongodb://127.0.0.1:27017/keshe', function (err) {
+    console.log('connect success');
+    if (err) {
+        console.error('connect to %s error: ', 'test', err.message);
+        process.exit(1);
+    }
+});
+
+
+
+
+
+
 // error handler
 onerror(app)
 

@@ -1,5 +1,7 @@
 const router = require('koa-router')()
 const login = require('./api/login')
+const signin = require('./api/signin')
+
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
     title: 'Hello Koa 2!'
@@ -17,6 +19,7 @@ router.get('/json', async (ctx, next) => {
 })
 
 router.use('/login', login.routes(), login.allowedMethods());
+router.use('/signin', signin.routes(), signin.allowedMethods());
 
 
 module.exports = router
